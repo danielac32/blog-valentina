@@ -93,72 +93,77 @@ class _InicioPageState extends State<InicioPage> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
 
+
+
+
+
+
   final List<Map<String, dynamic>> _carruselItems = [
     {
       'title': 'Sede Principal UNESR',
-      'description': 'Campus universitario con moderna infraestructura',
-      'image': 'https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dW5pdmVyc2l0eXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80',
-      'reseña': 'La sede principal de la UNESR cuenta con instalaciones modernas diseñadas para el aprendizaje integral'
+      'description': 'Areas verdes',
+      'image': 'assets/area_verde.jpeg',//'https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dW5pdmVyc2l0eXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80',
+      //'reseña': 'La sede principal de la UNESR cuenta con instalaciones modernas diseñadas para el aprendizaje integral'
     },
     {
       'title': 'Biblioteca Central',
-      'description': 'Centro de recursos para el aprendizaje',
-      'image': 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGlicmFyeXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80',
-      'reseña': 'Biblioteca equipada con más de 50,000 volúmenes y espacios para estudio e investigación'
+      'description': 'Biblioteca Central',
+      'image': 'assets/biblioteca_simon_carreño.jpeg',
+      //'reseña': 'Biblioteca equipada con más de 50,000 volúmenes y espacios para estudio e investigación'
     },
     {
       'title': 'Laboratorios de Tecnología',
-      'description': 'Espacios para innovación e investigación',
-      'image': 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGxhYm9yYXRvcnklMjBjb21wdXRlcnN8ZW58MHx8MHx8fDA%3D&w=1000&q=80',
-      'reseña': 'Laboratorios con tecnología de punta para prácticas estudiantiles y proyectos de investigación'
+      'description': 'Laboratorios de Tecnología',
+      'image': 'assets/cancha.jpeg',
+      //'reseña': 'Laboratorios con tecnología de punta para prácticas estudiantiles y proyectos de investigación'
     },
     {
       'title': 'Áreas Deportivas',
-      'description': 'Instalaciones para el desarrollo físico',
-      'image': 'https://images.unsplash.com/photo-1536922246289-88c42f957773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3BvcnRzJTIwZmFjaWxpdHl8ZW58MHx8MHx8fDA%3D&w=1000&q=80',
-      'reseña': 'Complejo deportivo con canchas múltiples para fomentar el desarrollo físico de los estudiantes'
+      'description': 'Áreas Deportivas',
+      'image': 'assets/cartelera.jpeg',
+      //'reseña': 'Complejo deportivo con canchas múltiples para fomentar el desarrollo físico de los estudiantes'
     },
   ];
 
   final List<Map<String, dynamic>> _galeriaItems = [
     {
       'titulo': 'Auditorio Principal',
-      'image': 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXVkaXRvcml1bXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80',
+      'image': 'assets/comedor.jpeg',
       'reseña': 'Auditorio con capacidad para 500 personas, equipado con tecnología audiovisual para eventos académicos',
       'icono': Icons.theaters,
       'color': Color(0xFF4A90E2),
     },
     {
       'titulo': 'Canchas Deportivas',
-      'image': 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmFza2V0YmFsbCUyMGNvdXJ0fGVufDB8fDB8fHww&w=1000&q=80',
+      'image': 'assets/control_de_estudio.jpeg',
       'reseña': 'Canchas de baloncesto y voleibol para competencias interuniversitarias y recreación estudiantil',
       'icono': Icons.sports_basketball,
       'color': Color(0xFFE24A90),
     },
     {
       'titulo': 'Cafetería Universitaria',
-      'image': 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2FmZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80',
+      'image': 'assets/noname1.jpeg',
       'reseña': 'Espacio de esparcimiento con variedad de alimentos saludables y ambiente estudiantil',
       'icono': Icons.restaurant,
       'color': Color(0xFF904AE2),
     },
     {
       'titulo': 'Jardines y Áreas Verdes',
-      'image': 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dW5pdmVyc2l0eSUyMGdhcmRlbnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80',
+      'image': 'assets/noname2.jpeg',
       'reseña': 'Extensas áreas verdes que promueven un ambiente de estudio tranquilo y ecológico',
       'icono': Icons.nature,
       'color': Color(0xFF4AE290),
     },
     {
       'titulo': 'Salones de Clase',
-      'image': 'https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xhc3Nyb29tfGVufDB8fDB8fHww&w=1000&q=80',
+      'image': 'assets/area_verde.jpeg',
       'reseña': 'Aulas equipadas con tecnología educativa moderna para un aprendizaje efectivo',
       'icono': Icons.school,
       'color': Color(0xFFFF6B35),
     },
     {
       'titulo': 'Centro de Estudiantes',
-      'image': 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3R1ZGVudCUyMGxvdW5nZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80',
+      'image': 'assets/biblioteca_simon_carreño.jpeg',
       'reseña': 'Espacio dedicado a actividades estudiantiles y reuniones de organizaciones universitarias',
       'icono': Icons.people,
       'color': Color(0xFF36B5B2),
@@ -225,10 +230,11 @@ class _InicioPageState extends State<InicioPage> {
 
   Widget _buildCarrusel() {
     return Container(
-      height: 250,
       child: Column(
         children: [
-          Expanded(
+          // Carrusel con altura basada en el ancho de la pantalla
+          AspectRatio(
+            aspectRatio: 4/3, // Proporción widescreen
             child: PageView.builder(
               controller: _pageController,
               itemCount: _carruselItems.length,
@@ -268,23 +274,21 @@ class _InicioPageState extends State<InicioPage> {
         borderRadius: BorderRadius.circular(16),
         child: Stack(
           children: [
-            // Imagen de fondo
-            Image.network(
-              item['image'] as String,
+            // Imagen de fondo - CAMBIO PRINCIPAL AQUÍ
+            Image.asset(
+              item['image'],
               width: double.infinity,
               height: double.infinity,
-              fit: BoxFit.cover,
-              loadingBuilder: (context, child, loadingProgress) {
-                if (loadingProgress == null) return child;
-                return Container(
-                  color: Colors.grey[300],
-                  child: Center(
-                    child: CircularProgressIndicator(
-                      value: loadingProgress.expectedTotalBytes != null
-                          ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
-                          : null,
-                    ),
-                  ),
+              fit: BoxFit.cover, // Cambiado de 'fill' a 'cover'
+              frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+                if (wasSynchronouslyLoaded) {
+                  return child;
+                }
+                return AnimatedOpacity(
+                  opacity: frame == null ? 0 : 1,
+                  duration: Duration(milliseconds: 300),
+                  curve: Curves.easeOut,
+                  child: child,
                 );
               },
               errorBuilder: (context, error, stackTrace) {
@@ -293,15 +297,18 @@ class _InicioPageState extends State<InicioPage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.error, color: Colors.grey, size: 40),
+                      Icon(Icons.photo_library, color: Colors.grey, size: 40),
                       SizedBox(height: 8),
-                      Text('Error al cargar imagen'),
+                      Text(
+                        'Imagen no disponible',
+                        style: TextStyle(fontSize: 12),
+                      ),
                     ],
                   ),
                 );
               },
             ),
-            // Gradiente oscuro para mejor legibilidad del texto
+            // Resto del código igual...
             Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -316,7 +323,6 @@ class _InicioPageState extends State<InicioPage> {
                 ),
               ),
             ),
-            // Contenido de texto
             Padding(
               padding: EdgeInsets.all(16),
               child: Column(
@@ -346,7 +352,7 @@ class _InicioPageState extends State<InicioPage> {
                       color: Colors.white.withOpacity(0.2),
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: Row(
+                   /* child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(Icons.info, color: Colors.white, size: 14),
@@ -359,7 +365,7 @@ class _InicioPageState extends State<InicioPage> {
                           ),
                         ),
                       ],
-                    ),
+                    ),*/
                   ),
                 ],
               ),
@@ -369,6 +375,8 @@ class _InicioPageState extends State<InicioPage> {
       ),
     );
   }
+
+
 
   Widget _buildCarruselIndicators() {
     return Row(
@@ -495,7 +503,39 @@ class _InicioPageState extends State<InicioPage> {
           child: Stack(
             children: [
               // SOLO IMAGEN - sin texto
-              Image.network(
+
+              Image.asset(
+                item['image'],
+                width: double.infinity,
+                height: double.infinity,
+                fit: BoxFit.cover,
+                frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+                  if (wasSynchronouslyLoaded) return child;
+                  return AnimatedOpacity(
+                    opacity: frame == null ? 0 : 1,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeOut,
+                    child: child,
+                  );
+                },
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    color: Colors.grey[200],
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.photo, color: Colors.grey, size: 20),
+                        SizedBox(height: 2),
+                        Text(
+                          'Imagen',
+                          style: TextStyle(fontSize: 8),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+              /*Image.network(
                 item['image'] as String,
                 width: double.infinity,
                 height: double.infinity,
@@ -527,7 +567,7 @@ class _InicioPageState extends State<InicioPage> {
                     ),
                   );
                 },
-              ),
+              ),*/
               // Solo un pequeño indicador en esquina
               Positioned(
                 bottom: 4,
@@ -572,7 +612,19 @@ class _InicioPageState extends State<InicioPage> {
                       topLeft: Radius.circular(12),
                       topRight: Radius.circular(12),
                     ),
-                    child: Image.network(
+                    child: Image.asset(
+                      item['image'], // Asegúrate de que item['image'] sea la ruta correcta
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          color: Colors.grey[200],
+                          child: Center(
+                            child: Icon(Icons.photo, color: Colors.grey, size: 40),
+                          ),
+                        );
+                      },
+                    ),
+                   /* child: Image.network(
                       item['image'] as String,
                       fit: BoxFit.cover,
                       loadingBuilder: (context, child, loadingProgress) {
@@ -592,7 +644,7 @@ class _InicioPageState extends State<InicioPage> {
                           ),
                         );
                       },
-                    ),
+                    ),*/
                   ),
                 ),
                 // Contenido de texto
