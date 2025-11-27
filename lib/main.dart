@@ -1,7 +1,123 @@
 import 'package:flutter/material.dart';
 
+import 'historia_widget.dart';
+
 void main() {
   runApp(UniversidadBlogApp());
+}
+
+
+
+class BlogCard extends StatelessWidget {
+  final String title;
+  final String subtitle;
+  final IconData icon;
+  final Color color;
+
+  const BlogCard({
+    super.key,
+    required this.title,
+    required this.subtitle,
+    required this.icon,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 8,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              color,
+              Color.alphaBlend(Colors.white.withOpacity(0.2), color),
+            ],
+          ),
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Icono
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.2),
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  icon,
+                  size: 32,
+                  color: Colors.white,
+                ),
+              ),
+
+              const SizedBox(height: 16),
+
+              // Título
+              Text(
+                title,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  height: 1.2,
+                ),
+                textAlign: TextAlign.start,
+              ),
+
+              const SizedBox(height: 12),
+
+              // Subtítulo
+              Text(
+                subtitle,
+                style: TextStyle(
+                  color: Colors.white.withOpacity(0.9),
+                  fontSize: 14,
+                  height: 1.4,
+                ),
+                textAlign: TextAlign.start,
+              ),
+
+              const SizedBox(height: 16),
+
+              // Botón de acción
+              Container(
+                width: double.infinity,
+                height: 40,
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(
+                    color: Colors.white.withOpacity(0.5),
+                    width: 1,
+                  ),
+                ),
+                child: const Center(
+                  child: Text(
+                    'Explorar',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 class UniversidadBlogApp extends StatelessWidget {
@@ -20,6 +136,8 @@ class UniversidadBlogApp extends StatelessWidget {
 }
 
 class BlogHomePage extends StatefulWidget {
+  const BlogHomePage({super.key});
+
   @override
   _BlogHomePageState createState() => _BlogHomePageState();
 }
@@ -112,14 +230,14 @@ class _InicioPageState extends State<InicioPage> {
       //'reseña': 'Biblioteca equipada con más de 50,000 volúmenes y espacios para estudio e investigación'
     },
     {
-      'title': 'Laboratorios de Tecnología',
-      'description': 'Laboratorios de Tecnología',
+      'title': 'Áreas Deportivas',
+      'description': 'Áreas Deportivas',
       'image': 'assets/cancha.jpeg',
       //'reseña': 'Laboratorios con tecnología de punta para prácticas estudiantiles y proyectos de investigación'
     },
     {
-      'title': 'Áreas Deportivas',
-      'description': 'Áreas Deportivas',
+      'title': 'Cartelera Informativa',
+      'description': 'Cartelera Informativa',
       'image': 'assets/cartelera.jpeg',
       //'reseña': 'Complejo deportivo con canchas múltiples para fomentar el desarrollo físico de los estudiantes'
     },
@@ -211,6 +329,118 @@ class _InicioPageState extends State<InicioPage> {
         children: [
           _buildCarrusel(),
           SizedBox(height: 20),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              if (constraints.maxWidth > 800) {
+                return const Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(child: BlogCard(
+                      title: 'SOMOS UNERS',
+                      subtitle: 'Conoce aspectos organizativos y estructurales de la UNERS',
+                      icon: Icons.account_balance,
+                      color: Color(0xFF2E7D32),
+                    )),
+                    SizedBox(width: 16),
+                    Expanded(child: BlogCard(
+                      title: 'FORMACIÓN ACADÉMICA',
+                      subtitle: 'Accede a las actividades académicas que ofrecemos',
+                      icon: Icons.school,
+                      color: Color(0xFF1565C0),
+                    )),
+                    SizedBox(width: 16),
+                    Expanded(child: BlogCard(
+                      title: 'INTERACCIÓN COMUNITARIA, CULTURA Y DEPORTES',
+                      subtitle: 'Aquí hallarás las actividades de extensión en las que podrás participar',
+                      icon: Icons.people,
+                      color: Color(0xFFE65100),
+                    )),
+                    SizedBox(width: 16),
+                    Expanded(child: BlogCard(
+                      title: 'DESARROLLO ESTUDIANTIL',
+                      subtitle: 'Contempla las actividades de apoyo a nuestros participantes',
+                      icon: Icons.psychology,
+                      color: Color(0xFF6A1B9A),
+                    )),
+                  ],
+                );
+              } else if (constraints.maxWidth > 600) {
+                return const Column(
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(child: BlogCard(
+                          title: 'SOMOS UNERS',
+                          subtitle: 'Conoce aspectos organizativos y estructurales de la UNERS',
+                          icon: Icons.account_balance,
+                          color: Color(0xFF2E7D32),
+                        )),
+                        SizedBox(width: 16),
+                        Expanded(child: BlogCard(
+                          title: 'FORMACIÓN ACADÉMICA',
+                          subtitle: 'Accede a las actividades académicas que ofrecemos',
+                          icon: Icons.school,
+                          color: Color(0xFF1565C0),
+                        )),
+                      ],
+                    ),
+                    SizedBox(height: 16),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(child: BlogCard(
+                          title: 'INTERACCIÓN COMUNITARIA, CULTURA Y DEPORTES',
+                          subtitle: 'Aquí hallarás las actividades de extensión en las que podrás participar',
+                          icon: Icons.people,
+                          color: Color(0xFFE65100),
+                        )),
+                        SizedBox(width: 16),
+                        Expanded(child: BlogCard(
+                          title: 'DESARROLLO ESTUDIANTIL',
+                          subtitle: 'Contempla las actividades de apoyo a nuestros participantes',
+                          icon: Icons.psychology,
+                          color: Color(0xFF6A1B9A),
+                        )),
+                      ],
+                    ),
+                  ],
+                );
+              } else {
+                return const Column(
+                  children: [
+                    BlogCard(
+                      title: 'SOMOS UNERS',
+                      subtitle: 'Conoce aspectos organizativos y estructurales de la UNERS',
+                      icon: Icons.account_balance,
+                      color: Color(0xFF2E7D32),
+                    ),
+                    SizedBox(height: 16),
+                    BlogCard(
+                      title: 'FORMACIÓN ACADÉMICA',
+                      subtitle: 'Accede a las actividades académicas que ofrecemos',
+                      icon: Icons.school,
+                      color: Color(0xFF1565C0),
+                    ),
+                    SizedBox(height: 16),
+                    BlogCard(
+                      title: 'INTERACCIÓN COMUNITARIA, CULTURA Y DEPORTES',
+                      subtitle: 'Aquí hallarás las actividades de extensión en las que podrás participar',
+                      icon: Icons.people,
+                      color: Color(0xFFE65100),
+                    ),
+                    SizedBox(height: 16),
+                    BlogCard(
+                      title: 'DESARROLLO ESTUDIANTIL',
+                      subtitle: 'Contempla las actividades de apoyo a nuestros participantes',
+                      icon: Icons.psychology,
+                      color: Color(0xFF6A1B9A),
+                    ),
+                  ],
+                );
+              }
+            },
+          ),
           _buildBlogCard(
             'Bienvenidos al Blog UNESR',
             'Un espacio dedicado a explorar la vida universitaria en la Universidad Nacional Experimental Simón Rodríguez',
@@ -767,6 +997,16 @@ class _InicioPageState extends State<InicioPage> {
             ),
             SizedBox(height: 12),
             Text(
+              'Enseñen y tendrán quien sepa; eduquen y tendrán quien haga...',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Colors.grey[800],
+                height: 1.5,
+              ),
+            ),
+            SizedBox(height: 12),
+            Text(
               'Este blog nace con el propósito de ser un punto de encuentro para estudiantes, profesores, egresados y todo aquel interesado en la vida académica y cultural de nuestra casa de estudios. Aquí encontrarás:',
               style: TextStyle(
                 fontSize: 14,
@@ -866,7 +1106,7 @@ class _InicioPageState extends State<InicioPage> {
             ),
             SizedBox(height: 16),
             // Misión expandida
-            _buildInfoSubsection(
+            /*_buildInfoSubsection(
               'Misión Institucional',
               Icons.flag,
               Color(0xFF4A90E2),
@@ -888,7 +1128,7 @@ class _InicioPageState extends State<InicioPage> {
               Color(0xFF904AE2),
               'Nuestro modelo se fundamenta en la flexibilidad curricular, la educación permanente y la integración teoría-práctica. Promovemos el aprendizaje autónomo, la investigación aplicada y el trabajo comunitario, formando profesionales capaces de adaptarse a los cambios sociales y tecnológicos.',
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 16),*/
             // Datos destacados
             Container(
               padding: EdgeInsets.all(16),
@@ -1074,8 +1314,16 @@ class _InicioPageState extends State<InicioPage> {
   }
 }
 
+
+
+
+
+
+
+
+
 // Las demás páginas se mantienen igual...
-class HistoriaPage extends StatelessWidget {
+class HistoriaPage2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
